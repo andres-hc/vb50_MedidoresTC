@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MedidorTCModel.DAL
 {
-    class MedidorDALFactory
+    public class MedidorDALFactory
     {
+        public static IMedidorDAL CreateDal()
+        {
+            return MedidorDALArchivos.GetInstance();
+        }
     }
 }
