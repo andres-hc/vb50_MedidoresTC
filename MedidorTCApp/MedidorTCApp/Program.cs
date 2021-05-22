@@ -20,26 +20,39 @@ namespace MedidorTCApp
             if (servidor.Iniciar())
             {
                 while (true)
-                {                    
+                {
+                    DateTime fechaA = DateTime.Now;
+                    string fechaF = Convert.ToString(fechaA.ToString("yyyy-MM-dd"));
+                    string fechaH = Convert.ToString(fechaA.ToString("HH-mm-ss"));
+                    string fechaSF = Convert.ToString(fechaA.ToString("yyyy-MM-dd"));
+                    string fechaSH = Convert.ToString(fechaA.ToString("HH-mm-ss"));
+                    string consumo = "consumo";
+                    string trafico = "trafico";
                     //Esperando Cliente
                     Console.WriteLine("Esperando lecturas");
                     if (servidor.ObtenerCliente())
                     {
-                        DateTime fecha = DateTime.Today;
-                        string fechaC = Convert.ToString(fecha);
                         Int32 idMedidor = 1;
+                        Int32 idMedidor2 = 2;
+                        Int32 valor = 0;
+                        string mensaje = fechaF + "-" + fechaH + "|" + idMedidor + "|" + consumo;
+                        string mensaje2 = fechaF + "-" + fechaH + "|" + idMedidor + "|" + consumo + "|" + valor + "| UPDATE";
                         Console.WriteLine("Recibiendo lectura..");
                         string medidor = "";
-                        while (medidor.ToLower() == "juntar variables, mañana sigo")
+                        string medidor2 = "";
+                        while (medidor.ToLower() != "Cerrar")
                         {
                             medidor = servidor.Leer();
                             Console.WriteLine("Medidor : {0}", medidor);
-                            if(medidor.ToLower() != "texto protocolo")
+                            if (medidor.ToLower() != "Cerrar")
                             {
-                                Console.WriteLine("texto enviado por servidor");
-                                medidor = Console.ReadLine().Trim();
-                                Console.WriteLine("Servidor : {0}", medidor);
-                                servidor.Escribir(medidor);
+                                Console.WriteLine("Servidor : " + fechaSF + "-" + fechaSH + "|" + "WAIT");
+                                medidor2 = servidor.Leer();
+                                if (medidor.ToLower() != mensaje2)
+                                {
+                                    Console.WriteLine("Medidor: {0}" + medidor2);
+                                    servidor.Escribir("Cerrar");
+                                }
                             }
                         }
                     }

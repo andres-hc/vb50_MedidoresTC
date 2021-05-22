@@ -20,5 +20,7 @@ namespace MedidorTCModel.DTO
         {
             return FechaConsumo + "|" + IdMedidor + "|" + Tipo;
         }
+
+        
     }
 }
