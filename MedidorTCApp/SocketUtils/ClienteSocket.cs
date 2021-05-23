@@ -15,13 +15,13 @@ namespace SocketUtils
         private StreamReader reader;
         private StreamWriter writer;
 
-        public ClienteSocket(int puerto)
+        public ClienteSocket(Socket comCliente)
         {
-            this.puerto = puerto;
-            //this.comCliente = comCliente;
-            //Stream stream = new NetworkStream(this.comCliente);
-            //this.writer = new StreamWriter(stream);
-            //this.reader = new StreamReader(stream);
+            //this.puerto = puerto;
+            this.comCliente = comCliente;
+            Stream stream = new NetworkStream(this.comCliente);
+            this.writer = new StreamWriter(stream);
+            this.reader = new StreamReader(stream);
 
         }
 

@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F673D18-D6F9-4DEB-A4AF-DF43C2E7FB20}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MedidorTCModel</RootNamespace>
-    <AssemblyName>MedidorTCModel</AssemblyName>
+    <ProjectGuid>{7B6C3FC3-EB4D-4699-BFDA-235CEA0437CE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ComunicacionApp</RootNamespace>
+    <AssemblyName>ComunicacionApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,17 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\IMedidorDAL.cs" />
-    <Compile Include="DAL\MedidorDALArchivos.cs" />
-    <Compile Include="DAL\MedidorDALFactory.cs" />
-    <Compile Include="DTO\EstacionCarga.cs" />
-    <Compile Include="DTO\EstadoMantencion.cs" />
-    <Compile Include="DTO\Medidor.cs" />
-    <Compile Include="DTO\PuntoCarga.cs" />
-    <Compile Include="DTO\Soporte.cs" />
-    <Compile Include="DTO\Tarifa.cs" />
-    <Compile Include="DTO\TipoCarga.cs" />
+    <Compile Include="Comunicacion\ClienteSocket.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

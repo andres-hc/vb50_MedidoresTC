@@ -20,9 +20,6 @@ namespace MedidorTCApp
             HiloServidor hiloServidor = new HiloServidor(puerto);
             Thread t = new Thread(new ThreadStart(hiloServidor.Ejecutar));
 
-            HiloCliente hiloCliente = new HiloCliente(puerto);
-            Thread t2 = new Thread(new ThreadStart(hiloCliente.Ejecutar));
-
             t.IsBackground = true;
             t.Start();
 

@@ -31,7 +31,7 @@ namespace MedidorTCModel.DAL
 
         public List<Medidor> GetAll()
         {
-            List<Medidor> lecturas = new List<Medidor>();
+            List<Medidor> lista = new List<Medidor>();
             try
             {
                 using (StreamReader reader = new StreamReader(archivo))
@@ -50,15 +50,15 @@ namespace MedidorTCModel.DAL
                                 Tipo = textoArray[2],
                                 Valor = Convert.ToInt32(textoArray[3]),
                             };
-                            lecturas.Add(m);
+                            lista.Add(m);
                         }
                     } while (linea != null);
                 }
             }catch(IOException ex)
             {
-                lecturas = null;
+                lista = null;
             }
-            return lecturas;
+            return lista;
         }
 
         public void Save(Medidor m)
