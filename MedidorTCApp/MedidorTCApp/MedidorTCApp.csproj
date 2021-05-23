@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hilos\HiloCliente.cs" />
+    <Compile Include="Hilos\HiloServidor.cs" />
+    <Compile Include="Partials\Program.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +55,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MedidorTCModel\MedidorTCModel.csproj">
+      <Project>{6f673d18-d6f9-4deb-a4af-df43c2e7fb20}</Project>
+      <Name>MedidorTCModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SocketUtils\SocketsUtils.csproj">
       <Project>{6807e113-c8a0-407a-ba60-6cc0e8eecb4d}</Project>
       <Name>SocketsUtils</Name>

@@ -45,8 +45,10 @@ namespace SocketUtils
                 this.writer = new StreamWriter(stream);
                 this.reader = new StreamReader(stream);
                 return true;
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
+                //retorna falso en caso de borrar el null
                 return false;
             }
         }

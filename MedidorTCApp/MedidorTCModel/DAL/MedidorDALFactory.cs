@@ -8,7 +8,7 @@ namespace MedidorTCModel.DAL
 {
     public class MedidorDALFactory
     {
-        public static IMedidorDAL CreateDal()
+        public static IMedidorDAL CreateDAL()
         {
             return MedidorDALArchivos.GetInstance();
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,10 @@ namespace MedidorTCModel.DAL
 {
     public class MedidorDALArchivos : IMedidorDAL
     {
+        //Aqui falta
+        private string archivo = Directory.GetCurrentDirectory()
+            + Path.DirectorySeparatorChar + "lecturas.csv";
+
         private MedidorDALArchivos()
         {
 
@@ -25,12 +31,49 @@ namespace MedidorTCModel.DAL
 
         public List<Medidor> GetAll()
         {
-            throw new NotImplementedException();
+            List<Medidor> lecturas = new List<Medidor>();
+            try
+            {
+                using (StreamReader reader = new StreamReader(archivo))
+                {
+                    string linea = null;
+                    do
+                    {
+                        linea = reader.ReadLine();
+                        if (linea != null)
+                        {
+                            string[] textoArray = linea.Split('|');
+                            Medidor m = new Medidor()
+                            {
+                                FechaConsumo = DateTime.ParseExact(textoArray[0], "yyyy-MM-dd-HH-mm-ss", CultureInfo.InvariantCulture),
+                                IdMedidor = Convert.ToInt32(textoArray[1]),
+                                Tipo = textoArray[2],
+                                Valor = Convert.ToInt32(textoArray[3]),
+                            };
+                            lecturas.Add(m);
+                        }
+                    } while (linea != null);
+                }
+            }catch(IOException ex)
+            {
+                lecturas = null;
+            }
+            return lecturas;
         }
 
         public void Save(Medidor m)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using(StreamWriter writer = new StreamWriter(archivo, true))
+                {
+                    writer.WriteLine(m);
+                    writer.Flush();
+                }
+            }catch(IOException ex)
+            {
+
+            }
         }
     }
 }
