@@ -1,12 +1,16 @@
-﻿using System;
+﻿using MedidorTCModel.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedidorTCApp.Partials
+namespace MedidorTCApp
 {
-    class Program
+    public partial class Program
     {
+        
+
+
     }
 }

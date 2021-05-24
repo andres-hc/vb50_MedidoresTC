@@ -45,7 +45,7 @@ namespace MedidorTCModel.DAL
                             string[] textoArray = linea.Split('|');
                             Medidor m = new Medidor()
                             {
-                                FechaConsumo = DateTime.ParseExact(textoArray[0], "yyyy-MM-dd-HH-mm-ss", CultureInfo.InvariantCulture),
+                                FechaConsumo = DateTime.ParseExact(textoArray[0], "yyyy-MM-dd" + "-" + "HH-mm-ss", CultureInfo.InvariantCulture),
                                 IdMedidor = Convert.ToInt32(textoArray[1]),
                                 Tipo = textoArray[2],
                                 Valor = Convert.ToInt32(textoArray[3]),

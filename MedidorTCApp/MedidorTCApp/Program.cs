@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MedidorTCApp
 {
-    class Program
+    public partial class Program
     {
         static void Main(string[] args)
         {
